@@ -36,9 +36,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 
 @push('scripts')
@@ -73,7 +71,7 @@
                             "iconSize"      : [50,50],
                             "locationId"    : 30,
                             "title"         : "Hello new",
-                            "image"         : "1a1eb1e4106fff0cc3467873f0f39cab.jpeg",
+                            "image"         : "https://images.unsplash.com/photo-1612298423159-dccda132f28d?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                             "description"   : "Mantap"
                     }
                 },
@@ -88,7 +86,7 @@
                             "iconSize"      : [50,50],
                             "locationId"    : 29,
                             "title"         : "Rumah saya Edit",
-                            "image"         : "0ea59991df2cb96b4df6e32307ea20ff.png",
+                            "image"         : "https://images.unsplash.com/photo-1612361814394-35785ba16dc3?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                             "description"   : "oke mantap Edit"
                         }
                 },
@@ -103,7 +101,7 @@
                             "iconSize"      : [50,50],
                             "locationId"    : 22,
                             "title"         : "Update Baru Gambar",
-                            "image"         : "d09444b68d8b72daa324f97c999c2301.jpeg",
+                            "image"         : "https://images.unsplash.com/photo-1612356700845-4b3fd814f44e?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                             "description"   : "Update Baru"
                         }
                 },
@@ -118,7 +116,7 @@
                             "iconSize"      : [50,50],
                             "locationId"    : 19,
                             "title"         : "awdwad",
-                            "image"         : "f0b88ffd980a764b9fca60d853b300ff.png",
+                            "image"         : "https://images.unsplash.com/photo-1612373958262-719771ecbb3e?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                             "description"   : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                         }
                 },
@@ -133,7 +131,7 @@
                             "iconSize"      : [50,50],
                             "locationId"    : 18,
                             "title"         : "adwawd",
-                            "image"         : "4c35cb1b76af09e6205f94024e093fe6.jpeg",
+                            "image"         : "https://images.unsplash.com/photo-1612361808300-da9583e1b34e?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxN3x8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                             "description"   : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                         }
                 },
@@ -148,7 +146,7 @@
                             "iconSize"      : [50,50],
                             "locationId"    : 12,
                             "title"         : "adawd",
-                            "image"         : "7c8c949fd0499eb50cb33787d680778c.jpeg",
+                            "image"         : "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                             "description"   : "awdwad"
                         }
                 }
@@ -161,6 +159,7 @@
                     const {geometry, properties} = location
                     const {iconSize, locationId, title, image, description} = properties
 
+                    //styling dari marker
                     let markerElement                   = document.createElement('div')
                     markerElement.className             = 'marker' + locationId
                     markerElement.id                    = locationId
@@ -169,8 +168,37 @@
                     markerElement.style.width           = '50px'
                     markerElement.style.height          = '50px'
 
+                    //styling pada pop up. petik yang digunakan adalah backtick
+                    const content = `
+                        <div style="overflow-y, auto; max-height:400px,width:100%">
+                            <table class="table table-sm mt-2">
+                                <tbody>
+                                    <tr>
+                                        <td>Title</td>
+                                        <td>${title}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Picture</td>
+                                        <td><img src="${image}" loading="lazy" class="img-fluid"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>${description}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `
+
+                    /// menampilkan pop up
+                    const popUp = new mapboxgl.Popup({
+                        offset:25
+                    }).setHTML(content).setMaxWidth("400px")
+
+                    //menampilkan marker
                     new mapboxgl.Marker(markerElement)
                     .setLngLat(geometry.coordinates)
+                    .setPopup(popUp)
                     .addTo(map)
                 })
             }
